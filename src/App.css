@@ -1,16 +1,25 @@
 .App {
   height: 100vh;
   background-color: #1a202c;
+  background: url("https://static.vecteezy.com/system/resources/previews/007/644/395/original/cute-and-kawaii-beer-flat-design-illustration-funny-beer-glass-character-with-smiling-human-emoji-cartoon-illustration-isolated-on-color-background-cute-and-funny-mascots-free-vector.jpg");
   overflow: scroll;
   text-align: center;
 }
 
-.white-background{
-  background-color:white !important;
+.beer-background-dark-mode{
+  background: url("https://static.vecteezy.com/system/resources/previews/005/495/713/non_2x/beer-packaging-seamless-pattern-foamy-drink-in-a-bottle-can-glass-mug-alcohol-sketch-cold-ale-on-a-black-background-flat-style-illustration-for-decoration-and-design-of-a-pub-or-bar-vector.jpg");
 }
 
-.black-text{
-  color:#1a202c !important;
+.white-background {
+  background-color: white !important;
+}
+
+.white-background-rgba75 {
+  background-color: rgba(255,255,255,0.85) !important;
+}
+
+.black-text {
+  color: #1a202c !important;
 }
 
 .container {
@@ -19,6 +28,12 @@
   flex-direction: column;
   justify-content: center;
   padding: 0 30px 0 30px;
+}
+
+.header-container-main{
+  padding: 2em;
+  background-color: rgba(0,0,0,.75);
+  border-radius: 1em;
 }
 
 .authed-container {
@@ -73,7 +88,7 @@
   margin-left: 10px;
 }
 
-.dark-mode-button{
+.dark-mode-button {
   background-color: #1a202c;
   color: white;
   font-size: 0.85em;
@@ -127,7 +142,7 @@
   object-fit: cover;
 }
 
-.connected-container input[type='text'] {
+.connected-container input[type="text"] {
   display: inline-block;
   color: white;
   padding: 10px;
@@ -143,4 +158,18 @@
 
 .connected-container button {
   height: 50px;
+}
+
+/* Change placeholder color to light */
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
 }

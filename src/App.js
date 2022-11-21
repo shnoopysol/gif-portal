@@ -26,12 +26,12 @@ const opts = {
 const TWITTER_HANDLE = "_buildspace";
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 
-const TEST_GIFS = [
-  "https://media.giphy.com/media/lTGLOH7ml3poQ6JoFg/giphy.gif",
-  "https://media.giphy.com/media/e6TR9n00dL3JS/giphy.gif",
-  "https://media.giphy.com/media/aCGdw5s3Tmxko6h7dP/giphy-downsized-large.gif",
-  "https://media.giphy.com/media/26tP21xUQnOCIIoFi/giphy.gif",
-];
+// const TEST_GIFS = [
+//   "https://media.giphy.com/media/lTGLOH7ml3poQ6JoFg/giphy.gif",
+//   "https://media.giphy.com/media/e6TR9n00dL3JS/giphy.gif",
+//   "https://media.giphy.com/media/aCGdw5s3Tmxko6h7dP/giphy-downsized-large.gif",
+//   "https://media.giphy.com/media/26tP21xUQnOCIIoFi/giphy.gif",
+// ];
 
 const App = () => {
   const [walletAddress, setWalletAddress] = useState(null);
@@ -66,10 +66,10 @@ const App = () => {
 
   const renderSwitchDarkMode = () => (
     <button
-      className={`dark-mode-button ${toggleDarkModeOn && "white-background black-text"}`}
+      className={`dark-mode-button ${!toggleDarkModeOn && "white-background black-text"}`}
       onClick={() => setToggleDarkModeOn((prev) => !prev)}
     >
-      {`Dark Mode ${toggleDarkModeOn ? "On" : "Off"}`}
+      {`Dark Mode ${!toggleDarkModeOn ? "On" : "Off"}`}
     </button>
   );
 
@@ -126,13 +126,13 @@ const App = () => {
   };
 
   const sendGif = async () => {
-    if(inputValue.length === 0){
+    if (inputValue.length === 0) {
       console.log("No gif link given!");
       return;
-    };
-    setInputValue('');
+    }
+    setInputValue("");
     console.log("Gif link:", inputValue);
-    try{
+    try {
       const provider = getProvider();
       const program = await getProgram();
 
@@ -145,7 +145,7 @@ const App = () => {
       console.log("GIF successfully sent to program", inputValue);
 
       await getGifList();
-    }catch (e) {
+    } catch (e) {
       console.log("Error sending GIF:", e);
     }
   };
@@ -215,21 +215,23 @@ const App = () => {
   }, [walletAddress]);
 
   return (
-    <div className={`App ${!toggleDarkModeOn && "white-background"}`}>
+    <div className={`App ${toggleDarkModeOn && "beer-background-dark-mode"}`}>
       <div className={walletAddress ? "authed-container" : "container"}>
         <div className="header-container">
-          <p className={`header ${!toggleDarkModeOn && "black-text"}`}>🖼 Beer Portal</p>
-          <p className={`sub-text ${!toggleDarkModeOn && "black-text"}`}>
-            View your Beer collection in the metaverse ✨
-          </p>
-          {renderSwitchDarkMode()}
+          <div className={`header-container-main ${toggleDarkModeOn && "white-background-rgba75 "}`}>
+            <p className={`header ${toggleDarkModeOn && "black-text"}`}>🖼 Beer Portal</p>
+            <p className={`sub-text ${toggleDarkModeOn && "black-text"}`}>
+              View your Beer collection in the metaverse ✨
+            </p>
+            {renderSwitchDarkMode()}
+          </div>
           {!walletAddress && renderNotConnectedContainer()}
           {walletAddress && renderConnectedContainer()}
         </div>
         <div className="footer-container">
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
           <a
-            className={`footer-text ${!toggleDarkModeOn && "black-text"}`}
+            className={`footer-text ${toggleDarkModeOn && "black-text"}`}
             href={TWITTER_LINK}
             target="_blank"
             rel="noreferrer"
